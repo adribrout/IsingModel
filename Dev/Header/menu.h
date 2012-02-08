@@ -18,8 +18,8 @@
 class Menu
 {
 private :
-	list <char> optionCharacterList ;
-	list <std::string> optionWordList ;
+	map <char> optionCharacterMap ;
+	map <std::string> optionWordMap ;
 	bool alreadyInstanciated ;
 
 
