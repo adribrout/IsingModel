@@ -18,9 +18,8 @@
 class Menu
 {
 private :
-	map <char> optionCharacterMap ;
-	map <std::string> optionWordMap ;
-	bool alreadyInstanciated ;
+	map <char,bool> optionCharacterMap ;
+	map <std::string,bool> optionWordMap ;
 
 
 public:
