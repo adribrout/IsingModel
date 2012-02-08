@@ -15,13 +15,21 @@
 #ifndef MENU_H
 #define MENU_H
 
-// Display help if no argument passed to executable.
-// Equivalent to "isingmodel --help"
-void usage();
+class Menu
+{
+private :
+	list <char> optionCharacterList ;
+	list <std::string> optionWordList ;
+	bool alreadyInstanciated ;
 
-// Analyze main arguments.
-// Different behaviors for different options
-void commandLineAnalysis(int argc, char * argv[]) ;
 
+public:
+	Menu();
+	bool CharacterOptionInList(char character) const ;
+	bool WordOptionInList(std::string word) const ;
+	void Usage() const ;
+	void CommandAnalysis() ;
+
+};
 
 #endif //MENU_H
