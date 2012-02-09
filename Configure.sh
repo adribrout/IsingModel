@@ -20,6 +20,6 @@
 
 #!/bin/bash
 
-me=$0
+me=$0   #(ridiculus...)
 
 
