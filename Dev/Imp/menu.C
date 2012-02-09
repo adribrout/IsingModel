@@ -70,8 +70,8 @@ void Menu::Usage() const
 	cout << "        --inputFile=INPUTFILE    Set INPUTFILE as input file" << endl ;
 	cout << "        --outputFile=OUTPUTFILE  Set OUTPUTFILE as output data file" << endl << endl ;
 	cout << "Analysis Options :" << endl;
-	cout << "   -n,  --size                   Set the size of the solid as n x n atoms" << endl ;
-	cout << "        --element                Set the studied element " << endl << endl ;
+	cout << "   -n,  --size=N                 Set the size of the solid as N x N atoms" << endl ;
+	cout << "        --element=ELT            Studied element for Ising model wiil be ELT" << endl << endl ;
 	cout << "Report bug to remi.ete@gmail.com" << endl ;
 	cout << "Source code can be downloaded on github : <https://github.com/rete/IsingModel>" << endl ;
 
