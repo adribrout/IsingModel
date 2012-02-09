@@ -27,18 +27,18 @@ Menu::Menu()
 	 * Menu constructor. Set all options.
 	 */
 
-	optionCharacterList.push_back('e') ;		// show errors in console
-	optionCharacterList.push_back('g') ;		// begin in graphic mode
-	optionCharacterList.push_back('d') ;		// forward error message in /dev/null
-	optionCharacterList.push_back('n') ;		// set the size of the solid as n x n atoms
+	optionCharacterMap['e'] = false ;		// show errors in console
+	optionCharacterMap['g'] = false ;		// begin in graphic mode
+	optionCharacterMap['d'] = false ;		// forward error message in /dev/null
+	optionCharacterMap['n'] = false ;		// set the size of the solid as n x n atoms
 
-	optionWordList.push_back("graphic") ;		// begin in graphic mode
-	optionWordList.push_back("error") ;			// show error in console
-	optionWordList.push_back("help") ;			// display the usage of the command
-	optionWordList.push_back("null") ;			// forward error message in /dev/null
-	optionWordList.push_back("element") ;		// set the Studied Element
-	optionWordList.push_back("inputFile") ;		// set the input file
-	optionWordList.push_back("outputFile") ;	// set the output file
+	optionWordMap["graphic"] = false ;		// begin in graphic mode
+	optionWordMap["error"] = false ;			// show error in console
+	optionWordMap["help"] = false ;			// display the usage of the command
+	optionWordMap["null"] = false ;			// forward error message in /dev/null
+	optionWordMap["element"] = false ;		// set the Studied Element
+	optionWordMap["inputFile"] = false ;		// set the input file
+	optionWordMap["outputFile"] = false ;	// set the output file
 
 }
 
@@ -51,7 +51,7 @@ Menu::~Menu()
 }
 
 
-void Menu::usage()
+void Menu::Usage() const
 {
 	/*
 	 * Display usage of the command
@@ -61,15 +61,23 @@ void Menu::usage()
 	cout << "Exemple : \"isingmodel -g\" to start with graphic mode" << endl ;
 	cout << endl ;
 	cout << "Display Options :" << endl;
-	cout << "   -g   --graphic :    Start with graphic mode" << endl ;
-	cout << "   -e   --error    :    Error messages in console mode." << endl ;
-	cout << "                        Default mode store error in a log file" << endl ;
-	cout << "        --help     :    Display help message and quit" << endl ;
-	cout << "   -n   --null     :    Forward error messages in /dev/null" << endl ;
+	cout << "   -g,  --graphic                Start with graphic mode" << endl ;
+	cout << "   -e,  --error                  Error messages in console mode." << endl ;
+	cout << "                                 Default mode store error messages in a log file" << endl ;
+	cout << "        --help                   Display help message and quit" << endl ;
+	cout << "   -d,  --null                   Forward error messages in /dev/null" << endl << endl ;
+	cout << "File Options :" << endl;
+	cout << "        --inputFile=INPUTFILE    Set INPUTFILE as input file" << endl ;
+	cout << "        --outputFile=OUTPUTFILE  Set OUTPUTFILE as output data file" << endl << endl ;
+	cout << "Analysis Options :" << endl;
+	cout << "   -n,  --size                   Set the size of the solid as n x n atoms" << endl ;
+	cout << "        --element                Set the studied element " << endl << endl ;
+	cout << "Report bug to remi.ete@gmail.com" << endl ;
+	cout << "Source code can be downloaded on github : <https://github.com/rete/IsingModel>" << endl ;
 
 }
 
-void Menu::commandLineAnalysis(int argc, char * argv[])
+void Menu::CommandAnalysis(int argc, char * argv[])
 {
 	/*
 	 * Analyze argument passed in console
@@ -90,7 +98,7 @@ void Menu::commandLineAnalysis(int argc, char * argv[])
 				{
 					word.push_back(c) ;
 				}
-				if (word == 'help')
+				if (word == "help")
 					cout << "help option passed" << endl ;
 
 			}
@@ -99,6 +107,7 @@ void Menu::commandLineAnalysis(int argc, char * argv[])
 				switch (c)
 				{
 				case 'g' :
+				optionCharacterMap['g'] = true ;
 				cout << "graphic mode actived" << endl ;
 				break ;
 
@@ -116,20 +125,20 @@ void Menu::commandLineAnalysis(int argc, char * argv[])
 	}
 }
 
-bool Menu::CharacterOptionInList(char character)
+bool Menu::CharacterOptionInMap(char character) const
 {
-	for (int i=0; i<Menu.optionCharacterList.size() ; i++)
+	for (int i=0; i<optionCharacterMap.size() ; i++)
 		{
-		if (character == Menu.optionCharacterList[i]) return True ;
-		else return False ;
+		if (optionCharacterMap.count(character) != 0) return true ;
+		else return false ;
 		}
 }
 
-bool Menu::WordOptionInList(string word)
+bool Menu::WordOptionInMap(string word) const
 {
-	for (int i=0; i<Menu.optionWordList.size() ; i++)
+	for (int i=0; i<optionWordMap.size() ; i++)
 		{
-		if (word == Menu.optionWordList[i]) return True ;
-		else return False ;
+		if (optionWordMap.count(word) != 0) return true ;
+		else return false ;
 		}
 }
