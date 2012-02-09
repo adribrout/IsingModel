@@ -22,20 +22,16 @@
 
 # Find the project's folder
 
-cd ../
 ISINGFOLDER=$(pwd)
-cd Env/
-
 
 # Needed for compilation
 
 export ISINGFOLDER
 
-export ISINGENV=$ISINGFOLDER/Env
 export ISINGDEV=$ISINGFOLDER/Dev
 export ISINGHEADER=$ISINGFOLDER/Dev/Header
 export ISINGIMP=$ISINGFOLDER/Dev/Imp
-export ISINGGUI=$ISNGFOLDER/Dev/GUI
+export ISINGGUI=$ISINGFOLDER/Dev/GUI
 
 
 
