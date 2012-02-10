@@ -19,7 +19,80 @@
 #######################################################################
 
 #!/bin/bash
+echo ""
 
-me=$0   #(ridiculus...)
+case "$#" in
+	0)
+	if  test ! -f /usr/include/c++/4.5/mersenne 
+	then cp mersenne /usr/include/c++/4.5/ 
+	fi
+		
+	#if test $? -eq 0
+	#then rm -f mersenne 
+	#fi
+	
+	if  test ! -f /usr/include/c++/4.5/randomc.h 
+		then 
+			cp randomc.h /usr/include/c++/4.5/ 
+		fi
+	
+	#if test $? -eq 0
+	#then rm -f randomc.h 
+	#fi
+	;;
+	
+	1)
+	case "$1" in 
+		install)
+			echo "installation de Qmake : "
+			apt-get install qt4-qmake
+			echo ""
+			echo "Installation de Qt : "
+			apt-get install qt4-dev-tools
+			echo ""
+			echo "Installation de Qt Designer : " 
+			apt-get install qt4-designer
+			echo ""
+			echo "Installation de g++ : "
+			apt-get install g++
+			echo ""
+			echo "Installtion de make : "
+			apt-get install make
+			echo ""
+			wait
+			echo "Create the makefile via Qmake : "
+			qmake -o makefile isingmodel.pro
+			wait
+			echo ""
+			echo "Compilation of the whole project : "
+			make
+			wait
+			echo ""
+			echo "Clean all fultile files : "
+			make clean
+			wait
+			echo ""
+			echo "Move executable in /usr/bin"
+			mv isingmodel /usr/bin
+		;;
+		uninstall)
+		if  test -f /usr/include/c++/4.5/mersenne 
+		then
+			mv /usr/include/c++/4.5/mersenne .
+			rm /usr/include/c++/4.5/mersenne 
+		fi
+	
+		if  test -f /usr/include/c++/4.5/randomc.h 
+		then 
+			mv /usr/include/c++/4.5/randomc.h .
+			rm /usr/include/c++/4.5/randomc.h 
+		fi
+		
+		if test -f /usr/bin/isingmodel
+		then rm /usr/bin/isingmodel
+		;;
+	esac
+;;
+esac
 
 
