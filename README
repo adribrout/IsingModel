@@ -3,15 +3,25 @@
 ########################################
 
 
+//Ising Model Project part of M1 computing project
+Copyright (c) 2012 Rémi Eté & Adrien Girard, 
+All Right Reserved.
+
+Use and copying of this software and preparation of derivative works
+based upon this software are permitted. Any copy of this software or
+of any derivative work must include the above copyright notice, this
+paragraph and the one after it.
+
+It is shared with "adribrout" pseudo on github.
 
 
-This repository contains code for Ising 
-Model Simulation part of the Master 1 
-computing project. It is shared with 
-"adribrout".
 
+########### INSTALLATION #############
 
+See INSTALL file in the main directory
+for more informations about installation.
 
+######################################
 
-
-CopyRight R. Ete , A. Girard
+Report bug to remi.ete@gmail.com" 
+Source code can be downloaded on github : <https://github.com/rete/IsingModel>
