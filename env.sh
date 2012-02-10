@@ -8,7 +8,7 @@
 #Use and copying of this software and preparation of derivative works
 #based upon this software are permitted. Any copy of this software or
 #of any derivative work must include the above copyright notice, this
-#paragraph and the one after it.
+#paragraph and the one after it.s
 #
 #######################################################################
 #
@@ -20,18 +20,26 @@
 
 #!/bin/bash
 
-# Find the project's folder
+# Project folder
 
-ISINGFOLDER=$(pwd)
+IsingFolder=/home/remi/IsingModel
+
+#echo "Donner le dossier d'installation du projet (/home/remi/) : "
+#read IsingFolder
 
 # Needed for compilation
 
-export ISINGFOLDER
+export IsingFolder
 
-export ISINGDEV=$ISINGFOLDER/Dev
-export ISINGHEADER=$ISINGFOLDER/Dev/Header
-export ISINGIMP=$ISINGFOLDER/Dev/Imp
-export ISINGGUI=$ISINGFOLDER/Dev/GUI
-
+export $1 IsingFolder=
+export $1 IsingUtils=
+export $1 IsingAnalysis=
+export $1 IsingGui=
+export $1 IsingUtilsSRC=
+export $1 IsingAnalysisSRC=
+export $1 IsingGuiSRC=
+export $1 IsingUtilsINCLUDE=
+export $1 IsingAnalysisINCLUDE=
+export $1 IsingGuiINCLUDE=
 
 
