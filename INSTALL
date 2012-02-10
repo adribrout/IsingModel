@@ -1,0 +1,51 @@
+//Ising Model Project part of M1 computing project
+Copyright (c) 2012 Rémi Eté & Adrien Girard, 
+All Right Reserved.
+
+Use and copying of this software and preparation of derivative works
+based upon this software are permitted. Any copy of this software or
+of any derivative work must include the above copyright notice, this
+paragraph and the one after it.
+
+It is shared with "adribrout".
+
+
+
+########### INSTALLATION #############
+
+To install this software type in bash shell :
+
+'sudo ./Configure.sh'
+
+This will configure your computer for installation
+Basically it moves or removes some file for installation. 
+
+Then type :
+
+'sudo ./Configure.sh install'
+
+This will 
+You must write the sudo prefix because of 
+'apt-get install' calling. Open the script and take 
+a look to be sure.
+
+'qmake -o makefile isingmodel.pro'
+
+'make'
+
+########### LAUNCH IT !!! ############
+
+You can launch it via :
+
+'isingmodel'
+
+Alone it just show you the usage. You must options to 
+run it!
+
+########## UNINSTALLATION ############
+
+This will only clean the file installed that you 
+won't need anymore, then type :
+
+>./Configure uninstall
+
