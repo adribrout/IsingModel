@@ -13,6 +13,8 @@
  */
 
 
+#include <QApplication>
+#include <QPushButton>
 #include "../include/GraphicMain.h"
 
 using namespace std ;

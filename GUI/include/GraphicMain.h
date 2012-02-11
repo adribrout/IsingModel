@@ -15,8 +15,6 @@
 #ifndef GRAPHICMAIN_H
 #define GRAPHICMAIN_H
 
-#include <QApplication>
-#include <QPushButton>
 
 int GraphicMain(int argc, char * argv[]) ;
 
