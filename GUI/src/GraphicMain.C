@@ -14,16 +14,18 @@
 
 
 #include <QApplication>
-#include <QPushButton>
+#include <QtGui>
 #include "../include/GraphicMain.h"
+#include "../include/MainWindow.h"
+#include "../include/gnuplot/GnuplotWindow.h"
 
 using namespace std ;
 
 int GraphicMain(int argc, char * argv[])
 {
 	QApplication app(argc, argv) ;
-	QPushButton bouton("Salut les Zéros, la forme ?") ;
-    bouton.setText("Pimp mon bouton !") ;
-    bouton.show() ;
-    return  app.exec() ;
+	GnuplotWindow gnuWin ;
+	gnuWin.show() ;
+
+	return  app.exec() ;
 }
