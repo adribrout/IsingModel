@@ -59,21 +59,32 @@ case "$#" in
 			echo "Installtion de make : "
 			apt-get install make
 			echo ""
-			wait
+		;;
+		compile)
 			echo "Create the makefile via Qmake : "
 			qmake -o makefile isingmodel.pro
 			wait
 			echo ""
-			echo "Compilation of the whole project : "
-			make
-			wait
-			echo ""
-			echo "Clean all fultile files : "
-			make clean
-			wait
-			echo ""
-			echo "Move executable in /usr/bin"
-			mv isingmodel /usr/bin
+			if test $? -eq 0
+			then
+				echo "Compilation of the whole project : "
+				make
+				wait
+				echo ""
+			fi
+			if test $? -eq 0
+			then
+				echo "Clean all futile files : "
+				make clean
+				wait
+				echo ""
+			fi
+			if test $? -eq 0
+			then
+				echo "Move executable in /usr/bin"
+				mv isingmodel /usr/bin
+				echo ""
+			fi
 		;;
 		uninstall)
 		if  test -f /usr/include/c++/4.5/mersenne 
@@ -90,6 +101,7 @@ case "$#" in
 		
 		if test -f /usr/bin/isingmodel
 		then rm /usr/bin/isingmodel
+		fi
 		;;
 	esac
 ;;
