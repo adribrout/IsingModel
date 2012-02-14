@@ -24,7 +24,26 @@ public :
 	~RangeGroupBox() ;
 
 private:
+	QVBoxLayout *rangeLayout ;
 
+	QHBoxLayout *firstRangeLayout ;
+	QHBoxLayout *secondRangeLayout ;
+	QHBoxLayout *thirdRangeLayout ;
+
+	QLabel *toFirstLabel ;
+	QLabel *toSecondLabel ;
+	QLabel *toThirdLabel ;
+
+	QLineEdit *minFirstRangeLine ;
+	QLineEdit *maxFirstRangeLine ;
+	QLineEdit *minSecondRangeLine ;
+	QLineEdit *maxSecondRangeLine ;
+	QLineEdit *minThirdRangeLine ;
+	QLineEdit *maxThirdRangeLine ;
+
+	QLabel *firstRangeLabel ;
+	QLabel *secondRangeLabel ;
+	QLabel *thirdRangeLabel ;
 
 };
 
