@@ -13,19 +13,31 @@ CONFIG +=qt
 
 HEADERS += UTILS/include/menu.h \
            ANALYSIS/include/Mersenne.h \
-           GUI/include/GraphicMain.h \
-           GUI/include/MainWindow.h \
-           GUI/include/MenuBar.h \
-           GUI/include/gnuplot/GnuplotWindow.h \
-           GUI/include/gnuplot/ExistingGroupBox.h
+           GUI/GraphicMain.h \
+           GUI/MainWindow/include/MainWindow.h \
+           GUI/MainWindow/include/MenuBar.h \
+           GUI/gnuplot/GnuplotWindow/include/GnuplotWindow.h \
+           GUI/gnuplot/ExistingFile/include/ExistingGroupBox.h \
+           GUI/gnuplot/NewFile/include/NewFileGroupBox.h \
+           GUI/gnuplot/NewFile/include/NewFileSettingsGroupBox.h \
+           GUI/gnuplot/PlotAndSaveGroupBox/include/PlotAndSaveGroupBox.h \
+           GUI/gnuplot/NewFile/include/RangeGroupBox.h \
+           GUI/gnuplot/NewFile/include/PlotTableView.h \
+           GUI/gnuplot/NewFile/include/PlotSettingsGroupBox.h
            
 
 SOURCES += main.C \
            UTILS/src/menu.C \
            ANALYSIS/src/Mersenne.C \
-           GUI/src/GraphicMain.C \
-           GUI/src/MainWindow.C \
-           GUI/src/MenuBar.C \
-           GUI/src/gnuplot/GnuplotWindow.C \
-           GUI/src/gnuplot/ExistingGroupBox.C
+           GUI/GraphicMain.C \
+           GUI/MainWindow/src/MainWindow.C \
+           GUI/MainWindow/src/MenuBar.C \
+           GUI/gnuplot/GnuplotWindow/src/GnuplotWindow.C \
+           GUI/gnuplot/ExistingFile/src/ExistingGroupBox.C \
+           GUI/gnuplot/NewFile/src/NewFileGroupBox.C \
+           GUI/gnuplot/NewFile/src/NewFileSettingsGroupBox.C \
+           GUI/gnuplot/PlotAndSaveGroupBox/src/PlotAndSaveGroupBox.C \
+           GUI/gnuplot/NewFile/src/RangeGroupBox.C \
+           GUI/gnuplot/NewFile/src/PlotTableView.C \
+           GUI/gnuplot/NewFile/src/PlotSettingsGroupBox.C
            
