@@ -69,10 +69,10 @@ case "$#" in
 			make
 			wait
 			echo ""
-			echo "Clean all futile files : "
-			make clean
-			wait
-			echo ""
+			#echo "Clean all futile files : "
+			#make clean
+			#wait
+			#echo ""
 			echo "Move executable in /usr/bin"
 			mv isingmodel /usr/bin
 			echo ""
