@@ -44,14 +44,8 @@ case "$#" in
 	1)
 	case "$1" in 
 		install)
-			echo "installation de Qmake : "
-			apt-get install qt4-qmake
-			echo ""
-			echo "Installation de Qt : "
-			apt-get install qt4-dev-tools
-			echo ""
-			echo "Installation de Qt Designer : " 
-			apt-get install qt4-designer
+			echo "Installation de l'environnement Qt : "
+			apt-get install qt4-qmake qt4-designer qt4-dev-tools
 			echo ""
 			echo "Installation de g++ : "
 			apt-get install g++
@@ -59,6 +53,8 @@ case "$#" in
 			echo "Installtion de make : "
 			apt-get install make
 			echo ""
+			echo "Installation de l'environnement Gnuplot"
+			apt-get install gnuplot gnuplot-doc gnuplot-x11 gnuplot-mode
 		;;
 		compile)
 			echo "Create the makefile via Qmake : "
