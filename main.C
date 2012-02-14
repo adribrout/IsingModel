@@ -17,7 +17,7 @@
 #include <QPushButton>
 #include "UTILS/include/menu.h"
 #include "ANALYSIS/include/Mersenne.h"
-#include "GUI/include/GraphicMain.h"
+#include "GUI/GraphicMain.h"
 
 using namespace std ;
 
