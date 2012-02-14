@@ -15,6 +15,8 @@
 
 PlotSettingsGroupBox::PlotSettingsGroupBox()
 {
+	setTitle("Plot Settings") ;
+
 	// Main Layout
 
 	settingsAndTableLayout = new QHBoxLayout;
@@ -23,6 +25,7 @@ PlotSettingsGroupBox::PlotSettingsGroupBox()
 	// Radio Button zone
 
 	twoDButton = new QRadioButton("2D") ;
+	twoDButton->setChecked(true) ;
 	threeDButton = new QRadioButton("3D") ;
 	dimensionLayout = new QHBoxLayout ;
 
@@ -71,10 +74,17 @@ PlotSettingsGroupBox::PlotSettingsGroupBox()
 	plotTV = new PlotTableView ;
 	tableLayout->addWidget(plotTV) ;
 
+	connect(coordinatesBox,SIGNAL(activated(QString)),this,SLOT(setRange(QString))) ;
+	connect(twoDButton,SIGNAL(toggled(bool)),rangeGB,SLOT(hideThirdCoordinate(bool))) ;
+
+
+	// Main Layout
+
 	settingsAndTableLayout->addLayout(settingsLayout) ;
 	settingsAndTableLayout->addLayout(tableLayout) ;
 
 	setLayout(settingsAndTableLayout) ;
+
 
 
 }
@@ -86,12 +96,35 @@ PlotSettingsGroupBox::~PlotSettingsGroupBox()
 
 void PlotSettingsGroupBox::setTwoDCoordinates(bool checked)
 {
-
 	if(checked)
 	{
 		coordinatesBox->clear() ;
 		coordinatesBox->addItem("Cartesian") ;
 		coordinatesBox->addItem("Polar") ;
+	}
+}
+
+void PlotSettingsGroupBox::setRange(QString coordinatesType)
+{
+	if(coordinatesType == "Cartesian" )
+	{
+		rangeGB->setFirstRangeLabelText("x range : ") ;
+		rangeGB->setSecondRangeLabelText("y range : ") ;
+		rangeGB->setThirdRangeLabelText("z range : ") ;
+	}
+
+	if(coordinatesType == "Polar" || coordinatesType == "Sperical")
+	{
+		rangeGB->setFirstRangeLabelText("r range : ") ;
+		rangeGB->setSecondRangeLabelText("theta range : ") ;
+		rangeGB->setThirdRangeLabelText("phi range : ") ;
+	}
+
+	if(coordinatesType == "Cylindrical" )
+	{
+		rangeGB->setFirstRangeLabelText("r range : ") ;
+		rangeGB->setSecondRangeLabelText("theta range : ") ;
+		rangeGB->setThirdRangeLabelText("z range : ") ;
 	}
 }
 
