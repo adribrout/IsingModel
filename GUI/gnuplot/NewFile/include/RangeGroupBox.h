@@ -18,10 +18,17 @@
 
 class RangeGroupBox : public QGroupBox
 {
+	Q_OBJECT
+
+	public slots :
+	void hideThirdCoordinate(bool value) ;
 
 public :
 	RangeGroupBox() ;
 	~RangeGroupBox() ;
+	void setFirstRangeLabelText(QString text) ;
+	void setSecondRangeLabelText(QString text) ;
+	void setThirdRangeLabelText(QString text) ;
 
 private:
 	QVBoxLayout *rangeLayout ;

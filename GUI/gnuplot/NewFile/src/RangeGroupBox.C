@@ -32,9 +32,9 @@ RangeGroupBox::RangeGroupBox()
 	minThirdRangeLine = new QLineEdit ;
 	maxThirdRangeLine = new QLineEdit ;
 
-	firstRangeLabel = new QLabel ;
-	secondRangeLabel = new QLabel ;
-	thirdRangeLabel = new QLabel ;
+	firstRangeLabel = new QLabel("x range :") ;
+	secondRangeLabel = new QLabel("y range :") ;
+	thirdRangeLabel = new QLabel("z range :") ;
 
 	firstRangeLayout->addWidget(firstRangeLabel) ;
 	firstRangeLayout->addWidget(minFirstRangeLine) ;
@@ -60,5 +60,26 @@ RangeGroupBox::RangeGroupBox()
 
 RangeGroupBox::~RangeGroupBox()
 {
-
+	//Default destructor
 }
+
+void RangeGroupBox::setFirstRangeLabelText(QString text)
+{
+	firstRangeLabel->setText(text) ;
+}
+
+void RangeGroupBox::setSecondRangeLabelText(QString text)
+{
+	secondRangeLabel->setText(text) ;
+}
+
+void RangeGroupBox::setThirdRangeLabelText(QString text)
+{
+	thirdRangeLabel->setText(text) ;
+}
+
+void RangeGroupBox::hideThirdCoordinate(bool value)
+{
+	if(value) thirdRangeLayout->setEnabled(false);
+}
+
