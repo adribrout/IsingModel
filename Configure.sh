@@ -65,26 +65,17 @@ case "$#" in
 			qmake -o makefile isingmodel.pro
 			wait
 			echo ""
-			if test $? -eq 0
-			then
-				echo "Compilation of the whole project : "
-				make
-				wait
-				echo ""
-			fi
-			if test $? -eq 0
-			then
-				echo "Clean all futile files : "
-				make clean
-				wait
-				echo ""
-			fi
-			if test $? -eq 0
-			then
-				echo "Move executable in /usr/bin"
-				mv isingmodel /usr/bin
-				echo ""
-			fi
+			echo "Compilation of the whole project : "
+			make
+			wait
+			echo ""
+			echo "Clean all futile files : "
+			make clean
+			wait
+			echo ""
+			echo "Move executable in /usr/bin"
+			mv isingmodel /usr/bin
+			echo ""
 		;;
 		uninstall)
 		if  test -f /usr/include/c++/4.5/mersenne 
