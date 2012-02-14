@@ -25,6 +25,7 @@ class PlotSettingsGroupBox : public QGroupBox
 public slots :
 	void setThreeDCoordinates(bool checked) ;
 	void setTwoDCoordinates(bool checked) ;
+	void setRange(QString coordinatesType) ;
 
 public :
 	PlotSettingsGroupBox() ;
