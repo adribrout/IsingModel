@@ -25,7 +25,6 @@ PlotSettingsGroupBox::PlotSettingsGroupBox()
 	// Radio Button zone
 
 	twoDButton = new QRadioButton("2D") ;
-	twoDButton->setChecked(true) ;
 	threeDButton = new QRadioButton("3D") ;
 	dimensionLayout = new QHBoxLayout ;
 

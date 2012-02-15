@@ -15,7 +15,7 @@
 
 NewFileGroupBox::NewFileGroupBox()
 {
-	setTitle("New File") ;
+	setTitle("Create a new Gnuplot file") ;
 	setCheckable(true) ;
 	setChecked(false) ;
 

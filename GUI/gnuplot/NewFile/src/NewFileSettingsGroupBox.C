@@ -19,29 +19,29 @@ NewFileSettingsGroupBox::NewFileSettingsGroupBox()
 {
 	setTitle("File Settings") ;
 
-	settingsLayout = new QVBoxLayout ;
+	settingsGridLayout = new QGridLayout ;
 
-	dataLayout = new QHBoxLayout ;
 	browseFileDataButton = new QPushButton("Browse") ;
 	dataFile = new QLineEdit ;
-	dataLabel = new QLabel("Data File :") ;
-	dataLayout->addWidget(dataLabel) ;
-	dataLayout->addWidget(dataFile) ;
-	dataLayout->addWidget(browseFileDataButton) ;
+	dataLabel = new QLabel("Main data file :") ;
+	settingsGridLayout->addWidget(dataLabel,0,0) ;
+	settingsGridLayout->addWidget(dataFile,0,1) ;
+	settingsGridLayout->addWidget(browseFileDataButton,0,2) ;
 
-
-	gnuLayout = new QHBoxLayout ;
 	browseFileGnuButton = new QPushButton("Browse") ;
-	gnuFile = new QLineEdit ;
-	gnuLabel = new QLabel("Gnuplot File :") ;
-	gnuLayout->addWidget(gnuLabel) ;
-	gnuLayout->addWidget(gnuFile) ;
-	gnuLayout->addWidget(browseFileGnuButton) ;
+	gnuFilePath = new QLabel ;
+	gnuLabel = new QLabel("File Folder :") ;
+	settingsGridLayout->addWidget(gnuLabel,1,0) ;
+	settingsGridLayout->addWidget(gnuFilePath,1,1) ;
+	settingsGridLayout->addWidget(browseFileGnuButton,1,2) ;
 
-	settingsLayout->addLayout(dataLayout) ;
-	settingsLayout->addLayout(gnuLayout) ;
 
-	setLayout(settingsLayout) ;
+	gnuFileNameLabel = new QLabel("Gnuplot file name :") ;
+	gnuFileName = new QLineEdit ;
+	settingsGridLayout->addWidget(gnuFileNameLabel) ;
+	settingsGridLayout->addWidget(gnuFileName) ;
+
+	setLayout(settingsGridLayout) ;
 
 	QObject::connect(browseFileDataButton,SIGNAL(clicked()),this,SLOT(browseExistingDataFile())) ;
 	QObject::connect(browseFileGnuButton,SIGNAL(clicked()),this,SLOT(browseExistingGnuFile())) ;
@@ -55,8 +55,8 @@ NewFileSettingsGroupBox::~NewFileSettingsGroupBox()
 
 void NewFileSettingsGroupBox::browseExistingGnuFile()
 {
-	QString fileName = QFileDialog::getOpenFileName(this,"Select a Gnuplot file","/home","Gnuplot file (*.gnu)") ;
-	gnuFile->setText(fileName) ;
+	QString filePath = QFileDialog::getExistingDirectory(this) ;
+	gnuFilePath->setText(filePath) ;
 }
 
 void NewFileSettingsGroupBox::browseExistingDataFile()

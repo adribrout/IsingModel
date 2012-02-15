@@ -23,17 +23,18 @@ class NewFileSettingsGroupBox : public QGroupBox
 
 private:
 
-	QVBoxLayout *settingsLayout ;
+	QGridLayout *settingsGridLayout ;
 
-	QHBoxLayout *dataLayout ;
 	QPushButton *browseFileDataButton ;
 	QLineEdit *dataFile ;
 	QLabel *dataLabel ;
 
-	QHBoxLayout *gnuLayout ;
 	QPushButton *browseFileGnuButton ;
-	QLineEdit *gnuFile ;
+	QLabel *gnuFilePath ;
 	QLabel *gnuLabel ;
+
+	QLabel *gnuFileNameLabel ;
+	QLineEdit *gnuFileName ;
 
 
 
