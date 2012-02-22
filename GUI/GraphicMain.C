@@ -17,7 +17,7 @@
 #include <QtGui>
 #include "GraphicMain.h"
 //#include "MainWindow/include/MainWindow.h"
-#include "./gnuplot/GnuplotWindow/include/GnuplotWindow.h"
+#include "./gnuplot/GnuplotWindow/Window/include/GnuplotWindow.h"
 
 using namespace std ;
 
