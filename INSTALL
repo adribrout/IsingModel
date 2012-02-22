@@ -30,7 +30,7 @@ This will compile the whole programm.
 
 To clean all futile files, type :
 
->'sudo ./Configure clean'
+>'sudo ./Configure.sh clean'
 or
 >'make clean'
 
