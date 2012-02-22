@@ -44,6 +44,9 @@ case "$#" in
 	1)
 	case "$1" in 
 		install)
+			echo "Mise a jour des paquets : "
+			apt-get update
+			echo ""
 			echo "Installation de l'environnement Qt : "
 			apt-get install qt4-qmake qt4-designer qt4-dev-tools
 			echo ""
@@ -55,6 +58,44 @@ case "$#" in
 			echo ""
 			echo "Installation de l'environnement Gnuplot"
 			apt-get install gnuplot gnuplot-doc gnuplot-x11 gnuplot-mode
+			echo ""
+			echo "Installation des libraires BOOST :"
+			apt-get install libboost*
+			echo ""
+			if [ -d  ~/.isingmodel ]
+			then 
+				echo "~/.isingmodel already exists"
+			else
+				mkdir ~/.isingmodel
+			fi
+			
+			if [ -d  ~/.isingmodel/gnuplot ]
+			then 
+				echo "~/.isingmodel/gnuplot already exists"
+			else
+				mkdir ~/.isingmodel/gnuplot
+			fi
+			
+			if [ -d  ~/.isingmodel/temp ]
+			then 
+				echo "~/.isingmodel already exists"
+			else
+				mkdir ~/.isingmodel/temp
+			fi
+			
+			if [ -d  ~/.isingmodel/saved ]
+			then 
+				echo "~/.isingmodel/saved already exists"
+			else
+				mkdir ~/.isingmodel/saved
+			fi
+			
+			if [ -e  ~/.isingmodel/logfile.log ]
+			then 
+				echo "~/.isingmodel/logfile already exists"
+			else
+				touch ~/.isingmodel/logfile.log
+			fi
 		;;
 		compile)
 			echo "Create the makefile via Qmake : "
@@ -65,12 +106,14 @@ case "$#" in
 			make
 			wait
 			echo ""
-			#echo "Clean all futile files : "
-			#make clean
-			#wait
-			#echo ""
 			echo "Move executable in /usr/bin"
 			mv isingmodel /usr/bin
+			echo ""
+		;;
+		clean)
+			echo "Clean all futile files : "
+			make clean
+			wait
 			echo ""
 		;;
 		uninstall)
