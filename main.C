@@ -15,31 +15,24 @@
 #include <iostream>
 #include <QApplication>
 #include <QPushButton>
-#include "UTILS/include/menu.h"
+#include "UTILS/Menu/include/menu.h"
 #include "ANALYSIS/include/Mersenne.h"
 #include "GUI/GraphicMain.h"
+//#include "UTILS/Log/include/LogFile.h"
 
 using namespace std ;
 
 int main(int argc, char* argv[])
 {
-
+	//LogFile *logfile = LogFile::getInstance("/home/remi/.isingmodel/logfile.log") ;
+	//logfile->info("LogFile created !") ;
 	Menu isingMenu ;
 
 	if (argc==1) isingMenu.Usage() ;
 
 	isingMenu.CommandAnalysis(argc,argv) ;
 
-	//double tab[10] = {0} ;
-
-	//RandomMersenneFillingTab(tab,10) ;
-	//printTab(tab,10) ;
-
 	if(isingMenu.CharOptionSet('g')) return GraphicMain(argc,argv) ;
-	else
-	{
-
-	}
 
     return 0 ;
 
