@@ -15,17 +15,20 @@
 #ifndef MENU_H
 #define MENU_H
 
+#include <iostream>
 #include <map>
 #include <string>
-//#include "../msgstream/include/MsgStream.h"
+#include <cstdlib>
+
 
 class Menu
 {
 private :
 	std::map <char,bool> optionCharacterMap ;
 	std::map <std::string,bool> optionWordMap ;
-	std::string size ;
-	std::string lerror ;
+	std::map <std::string,std::string> optionMap ;
+
+
 
 
 public:
@@ -37,6 +40,7 @@ public:
 	int CommandAnalysis(int argc, char *argv[]) ;
 	bool CharOptionSet(char opt) ;
 	bool WordOptionSet(std::string opt) ;
+	void showAllOptions() ;
 };
 
 #endif //MENU_H
