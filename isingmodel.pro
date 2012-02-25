@@ -23,6 +23,7 @@ HEADERS += ANALYSIS/include/Mersenne.h \
            GUI/gnuplot/GnuplotWindow/NewFile/include/RangeGroupBox.h \
            GUI/gnuplot/GnuplotWindow/NewFile/include/PlotTableView.h \
            GUI/gnuplot/GnuplotWindow/NewFile/include/PlotSettingsGroupBox.h \
+           GUI/gnuplot/GnuplotWindow/NewFile/include/CurveSettingsGroupBox.h \
            UTILS/Menu/include/menu.h \
 
 SOURCES += main.C \
@@ -38,4 +39,5 @@ SOURCES += main.C \
            GUI/gnuplot/GnuplotWindow/NewFile/src/RangeGroupBox.C \
            GUI/gnuplot/GnuplotWindow/NewFile/src/PlotTableView.C \
            GUI/gnuplot/GnuplotWindow/NewFile/src/PlotSettingsGroupBox.C \
+           GUI/gnuplot/GnuplotWindow/NewFile/src/CurveSettingsGroupBox.C \
            UTILS/Menu/src/menu.C \
