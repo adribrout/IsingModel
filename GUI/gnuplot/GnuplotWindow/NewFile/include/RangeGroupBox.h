@@ -43,10 +43,16 @@ private:
 	QLineEdit *maxSecondRangeLine ;
 	QLineEdit *minThirdRangeLine ;
 	QLineEdit *maxThirdRangeLine ;
+	QLineEdit *firstRangeTitle ;
+	QLineEdit *secondRangeTitle ;
+	QLineEdit *thirdRangeTitle ;
 
 	QLabel *firstRangeLabel ;
 	QLabel *secondRangeLabel ;
 	QLabel *thirdRangeLabel ;
+	QLabel *minLabel ;
+	QLabel *maxLabel ;
+	QLabel *axisTitleLabel ;
 
 };
 
