@@ -23,6 +23,7 @@ class ExistingGroupBox : public QGroupBox
 	Q_OBJECT
 
 private:
+	friend class GnuplotWindow ;
 	QHBoxLayout *existingLayout ;
 	QPushButton *browseFileButton ;
 	QLineEdit *existingFile ;

@@ -21,12 +21,14 @@ class PlotAndSaveGroupBox : public QGroupBox
 {
 	Q_OBJECT
 
+
 public :
 	PlotAndSaveGroupBox() ;
 	~PlotAndSaveGroupBox() ;
 
 
 private :
+	friend class GnuplotWindow ;
 	QHBoxLayout *plotAndSaveLayout ;
 	QPushButton *plotButton ;
 	QPushButton *saveButton ;
