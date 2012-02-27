@@ -25,6 +25,7 @@ PlotAndSaveGroupBox::PlotAndSaveGroupBox()
 	plotAndSaveLayout->addWidget(saveButton) ;
 	setLayout(plotAndSaveLayout) ;
 
+
 }
 
 PlotAndSaveGroupBox::~PlotAndSaveGroupBox()
