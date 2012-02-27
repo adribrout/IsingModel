@@ -12,9 +12,8 @@
  *
  */
 
-#include <iostream>
+
 #include "../include/menu.h"
-//#include "../msgstream/include/MsgStream.h"
 
 using namespace std;
 
@@ -24,6 +23,7 @@ Menu::Menu()
 
 	optionCharacterMap['g'] = false ;		// begin in graphic mode
 	optionCharacterMap['n'] = false ;		// set the size of the solid as n x n atoms
+	optionCharacterMap['x'] = false ;		// begin the default analysis
 
 	optionWordMap["graphic"] = false ;		// begin in graphic mode
 	optionWordMap["help"] = false ;			// display the usage of the command
@@ -32,6 +32,12 @@ Menu::Menu()
 	optionWordMap["outputFile"] = false ;	// set the output file
 	optionWordMap["size"] = false ;			// set the size of the solid as n x n atoms
 
+	optionMap["graphic"] = "off" ;
+	optionMap["size"] = "" ;
+	optionMap["element"] = "" ;
+	optionMap["inputFile"] = "" ;
+	optionMap["dataOutputFile"] = "" ;
+	optionMap["gnuplotFile"] = "" ;
 }
 
 
@@ -52,6 +58,8 @@ bool Menu::WordOptionSet(string opt)
 	return optionWordMap[opt] ;
 }
 
+
+
 void Menu::Usage() const
 {
 	/*
@@ -62,15 +70,16 @@ void Menu::Usage() const
 	cout << "Exemple : \"isingmodel -g\" to start with graphic mode" << endl ;
 	cout << endl ;
 	cout << "Display Options :" << endl;
-	cout << "   -g,  --graphic                Start with graphic mode" << endl ;
-	cout << "        --help                   Display help message and quit" << endl << endl ;
+	cout << "   -g,  --graphic                    Start with graphic mode" << endl ;
+	cout << "        --help                       Display help message and quit" << endl << endl ;
 	cout << "File Options :" << endl;
-	cout << "        --inputFile=INPUTFILE    Set INPUTFILE as input file. Format is .ism" << endl ;
-	cout << "        --GnuOutput=OUTPUTFILE   Set OUTPUTFILE as output data file" << endl ;
-	cout << "        --DataOutput=OUTPUTFILE  Set OUTPUTFILE as output data file. Format is .dat" << endl << endl ;
+	cout << "        --inputFile=INPUTFILE        Set INPUTFILE as input file. Format is .ism" << endl ;
+	cout << "        --gnuplotFile=GNUPLOTFILE    Set GNUFILE as gnuplot file" << endl ;
+	cout << "        --dataOutputFile=OUTPUTFILE  Set OUTPUTFILE as output data file. Format is .dat" << endl << endl ;
 	cout << "Analysis Options :" << endl;
-	cout << "   -n,  --size=N                 Set the size of the solid as N x N atoms" << endl ;
-	cout << "        --element=ELT            Studied element for Ising model will be ELT" << endl << endl ;
+	cout << "   -n,  --size=N                     Set the size of the solid as N x N atoms" << endl ;
+	cout << "   -x                                Execute the default analysis" << endl ;
+	cout << "        --element=ELT                Studied element for Ising model will be ELT" << endl << endl ;
 	cout << "Report bug to remi.ete@gmail.com" << endl ;
 	cout << "Source code can be downloaded on github : <https://github.com/rete/IsingModel>" << endl ;
 
@@ -98,20 +107,58 @@ int Menu::CommandAnalysis(int argc, char * argv[])
 				if (word == "help")
 				{
 					Usage() ;
-					return 0 ;
+					return 1 ;
 				}
-				if (word == "graphic")
+				else if (word == "graphic")
 				{
 					optionCharacterMap['g'] = true ;
-					cout << "graphic mode actived" << endl ;
+					optionMap["gnuplotFile"] = "on" ;
 				}
-				if(word == "size")
+				else if(word == "size")
 				{
+					optionCharacterMap['n'] = true ;
+					optionWordMap["size"] = true ;
 					while ( ((c=*arg++)!=0) )
 					{
-						size.push_back(c) ;
+						optionMap["size"].push_back(c) ;
 					}
-					cout << "Size set to " << size << endl ;
+				}
+				else if(word == "element")
+				{
+					optionWordMap["element"] = true ;
+					while ( ((c=*arg++)!=0) )
+					{
+						optionMap["element"].push_back(c) ;
+					}
+				}
+				else if(word == "inputFile")
+				{
+					optionWordMap["inputFile"] = true ;
+					while ( ((c=*arg++)!=0) )
+					{
+						optionMap["inputFile"].push_back(c) ;
+					}
+				}
+				else if(word == "dataOutputFile")
+				{
+					optionWordMap["dataOutputFile"] = true ;
+					while ( ((c=*arg++)!=0) )
+					{
+						optionMap["dataOutputFile"].push_back(c) ;
+					}
+				}
+				else if(word == "gnuplotFile")
+				{
+					optionWordMap["gnuplotFile"] = true ;
+					while ( ((c=*arg++)!=0) )
+					{
+						optionMap["gnuplotFile"].push_back(c) ;
+					}
+				}
+				else
+				{
+					cout << "Error : argument passed \'" << word << "\' to command line does not exists!" << endl ;
+					return 1 ;
 				}
 			}
 			else
@@ -122,17 +169,16 @@ int Menu::CommandAnalysis(int argc, char * argv[])
 					{
 					case 'g' :
 						optionCharacterMap['g'] = true ;
-						cout << "graphic mode actived" << endl ;
-						break ;
-
-					case 'e' :
-						cout << "error message will be written in the console" << endl ;
+						optionMap["gnuplotFile"] = "on" ;
 						break ;
 
 					case 'n' :
-						cout << "error message forwarded in /dev/null"<< endl ;
+						optionCharacterMap['n'] = true ;
+						optionMap["gnuplotFile"] = string(argv[i+1]) ;
 						break ;
-
+					default :
+						cout << "Error : argument passed \'" << c << "\' to command line does not exists!" << endl ;
+						return 1 ;
 					}
 				}
 			}
@@ -157,4 +203,17 @@ bool Menu::WordOptionInMap(string word) const
 		if (optionWordMap.count(word) != 0) return true ;
 		else return false ;
 		}
+}
+
+
+void Menu::showAllOptions()
+{
+	cout << "All Options :" << endl ;
+	cout << "graphic : " << optionMap["graphic"] << endl ;
+	cout << "size : " << optionMap["size"] << endl ;
+	cout << "element : " << optionMap["element"] << endl ;
+	cout << "inputFile : " << optionMap["inputFile"] << endl ;
+	cout << "dataOutputFile : " << optionMap["dataOutputFile"] << endl ;
+	cout << "gnuplotFile : " << optionMap["gnuplotFile"] << endl ;
+
 }
