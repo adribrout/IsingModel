@@ -41,7 +41,7 @@ ExistingGroupBox::~ExistingGroupBox()
 
 void ExistingGroupBox::browseExistingFile()
 {
-	QString file = QFileDialog::getOpenFileName(this,"Select a file","/home","gnuplot file (*.gnu)") ;
+	QString file = QFileDialog::getOpenFileName(this,"Select a file","/home","GNUPLOT file (*.gnu)") ;
 	existingFile->setText(file) ;
 }
 
