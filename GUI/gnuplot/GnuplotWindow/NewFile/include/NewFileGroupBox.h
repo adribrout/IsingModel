@@ -17,6 +17,8 @@
 #include <QtGui>
 #include "NewFileSettingsGroupBox.h"
 #include "PlotSettingsGroupBox.h"
+#include "PlotTableView.h"
+#include "CurveSettingsGroupBox.h"
 
 class NewFileGroupBox : public QGroupBox
 {
@@ -28,7 +30,14 @@ public slots :
 private :
 	NewFileSettingsGroupBox *fileSettingsGB ;
 	PlotSettingsGroupBox *plotSettingsGB ;
-	QVBoxLayout *newFileLayout ;
+	CurveSettingsGroupBox *curveSettingsGB;
+	PlotTableView *plotTV ;
+	QVBoxLayout *settingsAndTableLayout ;
+	QVBoxLayout *filePlotLayout ;
+	QHBoxLayout *fileCurvePlotLayout;
+	QVBoxLayout *tableLayout ;
+	QHBoxLayout *curveSettingsLayout;
+
 
 public :
 	NewFileGroupBox() ;

@@ -21,13 +21,27 @@ NewFileGroupBox::NewFileGroupBox()
 
 	fileSettingsGB = new NewFileSettingsGroupBox;
 	plotSettingsGB = new PlotSettingsGroupBox ;
-	newFileLayout = new QVBoxLayout ;
+	plotTV  = new PlotTableView ;
+	curveSettingsGB = new CurveSettingsGroupBox ;
 
+	settingsAndTableLayout = new QVBoxLayout ;
+	filePlotLayout = new QVBoxLayout ;
+	fileCurvePlotLayout = new QHBoxLayout ;
+	curveSettingsLayout = new QHBoxLayout ;
+	tableLayout = new QVBoxLayout ;
 
-	newFileLayout->addWidget(fileSettingsGB) ;
-	newFileLayout->addWidget(plotSettingsGB) ;
+	filePlotLayout->addWidget(fileSettingsGB) ;
+	filePlotLayout->addWidget(plotSettingsGB) ;
+	curveSettingsLayout->addWidget(curveSettingsGB) ;
+	tableLayout->addWidget(plotTV) ;
 
-	setLayout(newFileLayout) ;
+	fileCurvePlotLayout->addLayout(filePlotLayout) ;
+	fileCurvePlotLayout->addLayout(curveSettingsLayout) ;
+
+	settingsAndTableLayout->addLayout(fileCurvePlotLayout) ;
+	settingsAndTableLayout->addLayout(tableLayout) ;
+
+	setLayout(settingsAndTableLayout) ;
 
 }
 
