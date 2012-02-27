@@ -14,10 +14,14 @@
 
 
 #include "../include/GnuplotWindow.h"
+using namespace std ;
 
 GnuplotWindow::GnuplotWindow()
 {
 	setWindowIcon(QIcon("fractal.png")) ;
+	setWindowTitle("Gnuplot Window") ;
+	setGeometry(50,80,1100,650) ;
+	setMinimumSize(600,600) ;
 
 	existingGB = new ExistingGroupBox ;
 	newFileGB = new NewFileGroupBox ;
@@ -32,9 +36,19 @@ GnuplotWindow::GnuplotWindow()
 	connect(existingGB,SIGNAL(toggled(bool)),newFileGB,SLOT(setUnchecked(bool))) ;
 	connect(newFileGB,SIGNAL(toggled(bool)),existingGB,SLOT(setUnchecked(bool))) ;
 
+	connect(plotAndSaveGB->plotButton,SIGNAL(clicked()),this,SLOT(plotExistingFile()));
 }
 
 GnuplotWindow::~GnuplotWindow()
 {
 
 }
+
+void GnuplotWindow::plotExistingFile()
+{
+	CommandSystemThread *CSThread = new CommandSystemThread ;
+	string file = existingGB->existingFile->text().toStdString() ;
+	CSThread->setCommand("/usr/bin/gnuplot "+file) ;
+	CSThread->start() ;
+}
+
