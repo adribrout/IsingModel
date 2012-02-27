@@ -16,14 +16,18 @@
 #define GNUPLOTWINDOW_H
 
 #include <QtGui>
+#include <cstdlib>
 #include "../../ExistingFile/include/ExistingGroupBox.h"
 #include "../../NewFile/include/NewFileGroupBox.h"
 #include "../../PlotAndSaveGroupBox/include/PlotAndSaveGroupBox.h"
-
+#include "../../../../../UTILS/Thread/include/CommandSystemThread.h"
 
 class GnuplotWindow : public QWidget
 {
+	Q_OBJECT
 
+public slots :
+	void plotExistingFile() ;
 
 public :
 	GnuplotWindow() ;
@@ -31,6 +35,7 @@ public :
 
 private:
 
+	friend class CommandSystemThread ;
 	ExistingGroupBox *existingGB ;
 	NewFileGroupBox *newFileGB ;
 	PlotAndSaveGroupBox *plotAndSaveGB ;
