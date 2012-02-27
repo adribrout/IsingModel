@@ -27,7 +27,6 @@ int GraphicMain(int argc, char * argv[])
 {
 	QApplication app(argc, argv) ;
 	GnuplotWindow gnuWin ;
-	gnuWin.setWindowTitle("Gnuplot Window") ;
 	gnuWin.show() ;
 
 	return  app.exec() ;
