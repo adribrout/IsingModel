@@ -25,6 +25,7 @@ HEADERS += ANALYSIS/include/Mersenne.h \
            GUI/gnuplot/GnuplotWindow/NewFile/include/PlotSettingsGroupBox.h \
            GUI/gnuplot/GnuplotWindow/NewFile/include/CurveSettingsGroupBox.h \
            UTILS/Menu/include/menu.h \
+           UTILS/Thread/include/CommandSystemThread.h \
 
 SOURCES += main.C \
            ANALYSIS/src/Mersenne.C \
@@ -41,3 +42,4 @@ SOURCES += main.C \
            GUI/gnuplot/GnuplotWindow/NewFile/src/PlotSettingsGroupBox.C \
            GUI/gnuplot/GnuplotWindow/NewFile/src/CurveSettingsGroupBox.C \
            UTILS/Menu/src/menu.C \
+           UTILS/Thread/src/CommandSystemThread.C \
