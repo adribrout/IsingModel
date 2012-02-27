@@ -61,6 +61,6 @@ void NewFileSettingsGroupBox::browseExistingGnuFile()
 
 void NewFileSettingsGroupBox::browseExistingDataFile()
 {
-	QString fileName = QFileDialog::getOpenFileName(this,"Select a data file","/home","Data file (*.dat)") ;
+	QString fileName = QFileDialog::getOpenFileName(this,"Select a data file","/home","DATA file (*.dat)") ;
 	dataFile->setText(fileName) ;
 }
