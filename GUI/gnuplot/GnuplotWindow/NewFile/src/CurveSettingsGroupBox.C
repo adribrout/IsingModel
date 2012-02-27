@@ -16,6 +16,8 @@
 
 CurveSettingsGroupBox::CurveSettingsGroupBox()
 {
+	setTitle("Curve Settings") ;
+
 	//General Layout
 	curveSettingsLayout = new QVBoxLayout ;
 
@@ -28,6 +30,7 @@ CurveSettingsGroupBox::CurveSettingsGroupBox()
 	generalSettingsPage = new QWidget ;
 	generalSettingsPageLayout = new QVBoxLayout ;
 
+
 	//Specific Settings Page
 	specificSettingsPage = new QWidget ;
 	specificSettingsLayout = new QVBoxLayout ;
@@ -37,14 +40,17 @@ CurveSettingsGroupBox::CurveSettingsGroupBox()
 	resetButton = new QPushButton("Reset") ;
 	deleteButton = new QPushButton("Delete") ;
 	buttonLayout = new QHBoxLayout ;
-	buttonLayout->addWiget(addButton) ;
-	buttonLayout->addWiget(deleteButton) ;
-	buttonLayout->addWiget(resetButton) ;
+	buttonLayout->addWidget(addButton) ;
+	buttonLayout->addWidget(deleteButton) ;
+	buttonLayout->addWidget(resetButton) ;
 
 	//Layout Settings
 	curveSettingsLayout->addLayout(settingsTabLayout) ;
 	curveSettingsLayout->addLayout(buttonLayout) ;
 	setLayout(curveSettingsLayout) ;
+
+	settingsTab->addTab(generalSettingsPage,"General Settings") ;
+	settingsTab->addTab(specificSettingsPage,"Specific Settings") ;
 }
 
 CurveSettingsGroupBox::~CurveSettingsGroupBox()

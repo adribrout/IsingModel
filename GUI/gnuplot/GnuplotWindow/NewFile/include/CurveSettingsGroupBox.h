@@ -21,6 +21,9 @@ class CurveSettingsGroupBox : public QGroupBox
 
 private :
 	QVBoxLayout *curveSettingsLayout ;
+	QVBoxLayout *settingsTabLayout ;
+	QVBoxLayout *generalSettingsPageLayout ;
+	QVBoxLayout *specificSettingsLayout;
 	QTabWidget *settingsTab ;
 	QPushButton *addButton ;
 	QPushButton *resetButton ;
