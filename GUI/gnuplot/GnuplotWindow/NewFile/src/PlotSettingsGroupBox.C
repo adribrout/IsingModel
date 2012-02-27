@@ -19,7 +19,6 @@ PlotSettingsGroupBox::PlotSettingsGroupBox()
 
 	// Main Layout
 
-	settingsAndTableLayout = new QHBoxLayout;
 	settingsLayout = new QVBoxLayout;
 
 	// Radio Button zone
@@ -43,8 +42,6 @@ PlotSettingsGroupBox::PlotSettingsGroupBox()
 
 	settingsLayout->addLayout(coordinatesLayout) ;
 
-	connect(twoDButton , SIGNAL(toggled(bool)) , this , SLOT(setTwoDCoordinates(bool)) ) ;
-	connect(threeDButton , SIGNAL(toggled(bool)) , this , SLOT(setThreeDCoordinates(bool)) ) ;
 
 	// Range Zone
 
@@ -54,35 +51,16 @@ PlotSettingsGroupBox::PlotSettingsGroupBox()
 
 	settingsLayout->addLayout(rangeLayout) ;
 
-	// Button Zone
-
-	addCurveButton = new QPushButton("Add Curve") ;
-	moreSettingsButton = new QPushButton("More Settings") ;
-	deleteCurveButton = new QPushButton("Delete Curve") ;
-	buttonLayout = new QHBoxLayout ;
-
-	buttonLayout->addWidget(addCurveButton) ;
-	buttonLayout->addWidget(moreSettingsButton) ;
-	buttonLayout->addWidget(deleteCurveButton) ;
-
-	settingsLayout->addLayout(buttonLayout) ;
-
-	// Table Zone
-
-	tableLayout = new QVBoxLayout ;
-	plotTV = new PlotTableView ;
-	tableLayout->addWidget(plotTV) ;
+	// Signal Zone
 
 	connect(coordinatesBox,SIGNAL(activated(QString)),this,SLOT(setRange(QString))) ;
 	connect(twoDButton,SIGNAL(toggled(bool)),rangeGB,SLOT(hideThirdCoordinate(bool))) ;
-
+	connect(twoDButton , SIGNAL(toggled(bool)) , this , SLOT(setTwoDCoordinates(bool)) ) ;
+	connect(threeDButton , SIGNAL(toggled(bool)) , this , SLOT(setThreeDCoordinates(bool)) ) ;
 
 	// Main Layout
 
-	settingsAndTableLayout->addLayout(settingsLayout) ;
-	settingsAndTableLayout->addLayout(tableLayout) ;
-
-	setLayout(settingsAndTableLayout) ;
+	setLayout(settingsLayout) ;
 
 
 
@@ -108,7 +86,7 @@ void PlotSettingsGroupBox::setRange(QString coordinatesType)
 {
 	if(coordinatesType == "Cartesian" )
 	{
-		rangeGB->setFirstRangeLabelText( +"x range : ") ;
+		rangeGB->setFirstRangeLabelText( "x range : ") ;
 		rangeGB->setSecondRangeLabelText("y range : ") ;
 		rangeGB->setThirdRangeLabelText("z range : ") ;
 	}
@@ -116,7 +94,7 @@ void PlotSettingsGroupBox::setRange(QString coordinatesType)
 	if(coordinatesType == "Polar" || coordinatesType == "Spherical")
 	{
 		rangeGB->setFirstRangeLabelText("r range : ") ;
-		rangeGB->setSecondRangeLabelText(QString(QChar(1012))+" range : ") ;
+		rangeGB->setSecondRangeLabelText("theta range : ") ;
 		rangeGB->setThirdRangeLabelText("phi range : ") ;
 	}
 

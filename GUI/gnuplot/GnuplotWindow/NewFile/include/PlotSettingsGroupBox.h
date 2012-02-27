@@ -16,7 +16,6 @@
 
 #include <QtGui>
 #include "RangeGroupBox.h"
-#include "PlotTableView.h"
 
 class PlotSettingsGroupBox : public QGroupBox
 {
@@ -42,14 +41,6 @@ private :
 
 	QVBoxLayout *rangeLayout;
 	RangeGroupBox *rangeGB ;
-
-	QPushButton *addCurveButton ;
-	QPushButton *moreSettingsButton ;
-	QPushButton *deleteCurveButton ;
-	QHBoxLayout *buttonLayout ;
-
-	QVBoxLayout *tableLayout;
-	PlotTableView *plotTV ;
 
 	QHBoxLayout *settingsAndTableLayout ;
 	QVBoxLayout *settingsLayout ;
